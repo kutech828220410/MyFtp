@@ -103,7 +103,7 @@
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(332, 9);
+            this.btnDownload.Location = new System.Drawing.Point(332, 8);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(84, 21);
             this.btnDownload.TabIndex = 28;
