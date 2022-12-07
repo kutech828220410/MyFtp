@@ -52,6 +52,10 @@
             this.panel_Password = new System.Windows.Forms.Panel();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton_FTP = new System.Windows.Forms.RadioButton();
+            this.radioButton_URL = new System.Windows.Forms.RadioButton();
+            this.button_CheckVersion = new System.Windows.Forms.Button();
             this.groupBox_Main.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_FTP.SuspendLayout();
@@ -60,6 +64,7 @@
             this.panel_FTP_Server.SuspendLayout();
             this.panel_Username.SuspendLayout();
             this.panel_Password.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_Main
@@ -69,13 +74,14 @@
             this.groupBox_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_Main.Location = new System.Drawing.Point(0, 0);
             this.groupBox_Main.Name = "groupBox_Main";
-            this.groupBox_Main.Size = new System.Drawing.Size(431, 235);
+            this.groupBox_Main.Size = new System.Drawing.Size(431, 245);
             this.groupBox_Main.TabIndex = 0;
             this.groupBox_Main.TabStop = false;
             this.groupBox_Main.Text = "Download Data through FTP";
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button_CheckVersion);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnDownload);
             this.panel2.Controls.Add(this.label4);
@@ -85,10 +91,10 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtFileName);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 143);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 147);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(425, 89);
+            this.panel2.Size = new System.Drawing.Size(425, 95);
             this.panel2.TabIndex = 3;
             // 
             // btnSave
@@ -124,13 +130,13 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(75, 58);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(245, 21);
+            this.progressBar1.Size = new System.Drawing.Size(194, 21);
             this.progressBar1.TabIndex = 25;
             // 
             // lbProgress
             // 
             this.lbProgress.AutoSize = true;
-            this.lbProgress.Location = new System.Drawing.Point(332, 63);
+            this.lbProgress.Location = new System.Drawing.Point(275, 63);
             this.lbProgress.Name = "lbProgress";
             this.lbProgress.Size = new System.Drawing.Size(20, 12);
             this.lbProgress.TabIndex = 26;
@@ -174,19 +180,20 @@
             // panel_FTP
             // 
             this.panel_FTP.Controls.Add(this.groupBox_FTP);
-            this.panel_FTP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_FTP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_FTP.Location = new System.Drawing.Point(3, 18);
             this.panel_FTP.Name = "panel_FTP";
-            this.panel_FTP.Size = new System.Drawing.Size(425, 125);
+            this.panel_FTP.Size = new System.Drawing.Size(425, 224);
             this.panel_FTP.TabIndex = 2;
             // 
             // groupBox_FTP
             // 
+            this.groupBox_FTP.Controls.Add(this.panel1);
             this.groupBox_FTP.Controls.Add(this.flowLayoutPanel1);
             this.groupBox_FTP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_FTP.Location = new System.Drawing.Point(0, 0);
             this.groupBox_FTP.Name = "groupBox_FTP";
-            this.groupBox_FTP.Size = new System.Drawing.Size(425, 125);
+            this.groupBox_FTP.Size = new System.Drawing.Size(425, 224);
             this.groupBox_FTP.TabIndex = 12;
             this.groupBox_FTP.TabStop = false;
             this.groupBox_FTP.Text = "FTP";
@@ -196,11 +203,11 @@
             this.flowLayoutPanel1.Controls.Add(this.panel_FTP_Server);
             this.flowLayoutPanel1.Controls.Add(this.panel_Username);
             this.flowLayoutPanel1.Controls.Add(this.panel_Password);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 18);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(419, 104);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(349, 203);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // panel_FTP_Server
@@ -285,6 +292,50 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Password:";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButton_URL);
+            this.panel1.Controls.Add(this.radioButton_FTP);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(352, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(70, 203);
+            this.panel1.TabIndex = 34;
+            // 
+            // radioButton_FTP
+            // 
+            this.radioButton_FTP.AutoSize = true;
+            this.radioButton_FTP.Checked = true;
+            this.radioButton_FTP.Location = new System.Drawing.Point(14, 17);
+            this.radioButton_FTP.Name = "radioButton_FTP";
+            this.radioButton_FTP.Size = new System.Drawing.Size(42, 16);
+            this.radioButton_FTP.TabIndex = 0;
+            this.radioButton_FTP.TabStop = true;
+            this.radioButton_FTP.Text = "FTP";
+            this.radioButton_FTP.UseVisualStyleBackColor = true;
+            this.radioButton_FTP.CheckedChanged += new System.EventHandler(this.radioButton_FTP_CheckedChanged);
+            // 
+            // radioButton_URL
+            // 
+            this.radioButton_URL.AutoSize = true;
+            this.radioButton_URL.Location = new System.Drawing.Point(14, 43);
+            this.radioButton_URL.Name = "radioButton_URL";
+            this.radioButton_URL.Size = new System.Drawing.Size(46, 16);
+            this.radioButton_URL.TabIndex = 1;
+            this.radioButton_URL.Text = "URL";
+            this.radioButton_URL.UseVisualStyleBackColor = true;
+            this.radioButton_URL.CheckedChanged += new System.EventHandler(this.radioButton_URL_CheckedChanged);
+            // 
+            // button_CheckVersion
+            // 
+            this.button_CheckVersion.Location = new System.Drawing.Point(332, 63);
+            this.button_CheckVersion.Name = "button_CheckVersion";
+            this.button_CheckVersion.Size = new System.Drawing.Size(84, 21);
+            this.button_CheckVersion.TabIndex = 30;
+            this.button_CheckVersion.Text = "Check Version";
+            this.button_CheckVersion.UseVisualStyleBackColor = true;
+            this.button_CheckVersion.Click += new System.EventHandler(this.button_CheckVersion_Click);
+            // 
             // Ftp_DounloadUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -292,7 +343,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.groupBox_Main);
             this.Name = "Ftp_DounloadUI";
-            this.Size = new System.Drawing.Size(431, 235);
+            this.Size = new System.Drawing.Size(431, 245);
             this.groupBox_Main.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -305,6 +356,8 @@
             this.panel_Username.PerformLayout();
             this.panel_Password.ResumeLayout(false);
             this.panel_Password.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -334,5 +387,9 @@
         private System.Windows.Forms.Panel panel_Password;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButton_URL;
+        private System.Windows.Forms.RadioButton radioButton_FTP;
+        private System.Windows.Forms.Button button_CheckVersion;
     }
 }

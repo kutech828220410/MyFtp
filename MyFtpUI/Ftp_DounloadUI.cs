@@ -16,7 +16,35 @@ namespace MyFtpUI
     public partial class Ftp_DounloadUI : UserControl
     {
         private byte[] downloadedData;
-
+        public enum E_DownloadType
+        {
+            FTP,
+            URL,
+        }
+        private E_DownloadType e_DownloadType = Ftp_DounloadUI.E_DownloadType.FTP;
+        [ReadOnly(false), Browsable(true), Category("一般參數"), Description(""), DefaultValue("")]
+        public E_DownloadType DownloadType
+        {
+            set
+            {
+                if (value == E_DownloadType.FTP)
+                {
+                    radioButton_FTP.Checked = true;
+                }
+                if (value == E_DownloadType.URL)
+                {
+                    radioButton_URL.Checked = true;
+                }
+            }
+            get
+            {
+                if (radioButton_FTP.Checked)
+                {
+                    return Ftp_DounloadUI.E_DownloadType.FTP;
+                }
+                return Ftp_DounloadUI.E_DownloadType.URL;
+            }
+        }
         [ReadOnly(false), Browsable(true), Category("一般參數"), Description(""), DefaultValue("")]
         public bool Username_要顯示
         {
@@ -134,7 +162,7 @@ namespace MyFtpUI
                 else this.txtFileName.Text = value;
             }
         }
-
+     
         [ReadOnly(false), Browsable(false), Category(""), Description(""), DefaultValue("")]
         //private string DesktopPath = Application.LocalUserAppDataPath;
         private string DesktopPath  = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -207,7 +235,14 @@ namespace MyFtpUI
         public string GetFileVersion()
         {
             string fileName = Path.GetFileNameWithoutExtension(this.FileName) + ".ini";
-            this.DownloadFile(this.FTP_Server, fileName, this.Username, this.Password, false);
+            if (this.e_DownloadType == E_DownloadType.FTP)
+            {
+                this.DownloadFile(this.FTP_Server, fileName, this.Username, this.Password, false);
+            }
+            else 
+            {
+                this.DownloadFile(this.FTP_Server, fileName);
+            }
             this.SaveFile(@DesktopPath + "/" + fileName);
             try
             {
@@ -246,7 +281,14 @@ namespace MyFtpUI
         }
         public bool DownloadFile(bool ShowMessage)
         {
-            return this.DownloadFile(this.FTP_Server, this.FileName, this.Username, this.Password, ShowMessage);
+            if(this.e_DownloadType == E_DownloadType.FTP)
+            {
+                return this.DownloadFile(this.FTP_Server, this.FileName, this.Username, this.Password, ShowMessage);
+            }
+            else
+            {
+                return this.DownloadFile(this.FTP_Server, this.FileName);
+            }
         }
         public bool DownloadFile(string FTPAddress, string filename, string username, string password , bool ShowMessage)
         {
@@ -378,7 +420,23 @@ namespace MyFtpUI
             password = string.Empty;
             return flag_OK;
         }
-
+        public bool DownloadFile(string URL , string filename)
+        {
+            Console.WriteLine("開始WebClient下載檔案作業...");
+            try
+            {
+                WebClient mywebClient = new WebClient();
+                downloadedData = mywebClient.DownloadData(@URL + @"/" + filename);
+                Console.WriteLine("WebClient下載檔案完成!");
+            }
+            catch
+            {
+                Console.WriteLine("WebClient下載檔案失敗!");
+                return false;
+            }
+            return true;
+        
+        }
         public bool SaveFile()
         {
             return this.SaveFile(@DesktopPath + "/" + this.FileName);
@@ -449,6 +507,7 @@ namespace MyFtpUI
   
         }
 
+        #region Event
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (downloadedData != null && downloadedData.Length != 0)
@@ -470,20 +529,48 @@ namespace MyFtpUI
         }
         private void btnDownload_Click(object sender, EventArgs e)
         {
-     
 
-            if (txtFTP_Serverd.Text != "ftp://" && txtFTP_Serverd.Text != string.Empty)
-                if (txtFileName.Text != string.Empty)
+            if (e_DownloadType == E_DownloadType.FTP)
+            {
+                if (txtFTP_Serverd.Text != "ftp://" && txtFTP_Serverd.Text != string.Empty)
                 {
-                    DownloadFile(txtFTP_Serverd.Text, txtFileName.Text, txtUsername.Text, txtPassword.Text ,true);
+                    if (txtFileName.Text != string.Empty)
+                    {
+                        DownloadFile(txtFTP_Serverd.Text, txtFileName.Text, txtUsername.Text, txtPassword.Text, true);
 
-                    saveFile.FileName = txtFileName.Text;
+                        saveFile.FileName = txtFileName.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a file name or click the Get File List button");
+                    }
+
                 }
                 else
-                    MessageBox.Show("Please enter a file name or click the Get File List button");
+                {
+                    MessageBox.Show("Please enter a FTP address");
+                }
+            }
             else
-                MessageBox.Show("Please enter a FTP address");
+            {
+                this.DownloadFile();
+            }
+        
         }
+        private void button_CheckVersion_Click(object sender, EventArgs e)
+        {
+            this.GetFileVersion();
+        }
+        private void radioButton_FTP_CheckedChanged(object sender, EventArgs e)
+        {
+            e_DownloadType = E_DownloadType.FTP;
+        }
+        private void radioButton_URL_CheckedChanged(object sender, EventArgs e)
+        {
+            e_DownloadType = E_DownloadType.URL;
+        }
+        #endregion
 
+     
     }
 }

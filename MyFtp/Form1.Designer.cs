@@ -34,24 +34,26 @@
             // ftp_DounloadUI1
             // 
             this.ftp_DounloadUI1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ftp_DounloadUI1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ftp_DounloadUI1.DownloadType = MyFtpUI.Ftp_DounloadUI.E_DownloadType.URL;
             this.ftp_DounloadUI1.FileName = "Setup.msi";
-            this.ftp_DounloadUI1.FTP_Groupbox_要顯示 = false;
-            this.ftp_DounloadUI1.FTP_Server = "ftp://kutech.myds.me/FTP/高雄榮總(屏東分院)/藥品補給系統";
-            this.ftp_DounloadUI1.FTP_Server_要顯示 = false;
-            this.ftp_DounloadUI1.Location = new System.Drawing.Point(12, 21);
+            this.ftp_DounloadUI1.FTP_Groupbox_要顯示 = true;
+            this.ftp_DounloadUI1.FTP_Server = "https://github.com/kutech828220410/Pharmacy/raw/master/Advance%20Install";
+            this.ftp_DounloadUI1.FTP_Server_要顯示 = true;
+            this.ftp_DounloadUI1.Location = new System.Drawing.Point(0, 0);
             this.ftp_DounloadUI1.Name = "ftp_DounloadUI1";
             this.ftp_DounloadUI1.Password = "test";
-            this.ftp_DounloadUI1.Password_要顯示 = false;
-            this.ftp_DounloadUI1.Size = new System.Drawing.Size(431, 112);
+            this.ftp_DounloadUI1.Password_要顯示 = true;
+            this.ftp_DounloadUI1.Size = new System.Drawing.Size(438, 425);
             this.ftp_DounloadUI1.TabIndex = 0;
             this.ftp_DounloadUI1.Username = "test";
-            this.ftp_DounloadUI1.Username_要顯示 = false;
+            this.ftp_DounloadUI1.Username_要顯示 = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 285);
+            this.ClientSize = new System.Drawing.Size(438, 425);
             this.Controls.Add(this.ftp_DounloadUI1);
             this.Name = "Form1";
             this.ResumeLayout(false);
