@@ -10,6 +10,7 @@ using System.Windows.Forms;
 //Needed
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Diagnostics;
 namespace MyFtpUI
 {
@@ -420,23 +421,39 @@ namespace MyFtpUI
             password = string.Empty;
             return flag_OK;
         }
-        public bool DownloadFile(string URL , string filename)
+
+        public bool DownloadFile(string URL, string filename)
         {
-            Console.WriteLine("開始WebClient下載檔案作業...");
+            bool result = Task.Run(async () =>
+            {
+                bool responseBody = await DownloadFileAsync(URL, filename);
+                return responseBody;
+            }).Result;
+            return result;
+        }
+        async public Task<bool> DownloadFileAsync(string URL , string filename)
+        {
+            Console.WriteLine("Download from url start...");
             try
             {
                 WebClient mywebClient = new WebClient();
-                downloadedData = mywebClient.DownloadData(@URL + @"/" + filename);
-                Console.WriteLine("WebClient下載檔案完成!");
+                Uri uri = new Uri(@URL + @"/" + filename);
+                mywebClient.DownloadProgressChanged += MywebClient_DownloadProgressChanged;
+                mywebClient.DownloadDataCompleted += MywebClient_DownloadDataCompleted;
+                downloadedData = await mywebClient.DownloadDataTaskAsync(uri);
+                Console.WriteLine("Download from url done!");
             }
             catch
             {
-                Console.WriteLine("WebClient下載檔案失敗!");
+                Console.WriteLine("Download from url failed!");
                 return false;
             }
             return true;
         
         }
+
+       
+
         public bool SaveFile()
         {
             return this.SaveFile(@DesktopPath + "/" + this.FileName);
@@ -508,6 +525,15 @@ namespace MyFtpUI
         }
 
         #region Event
+        private void MywebClient_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+        {
+            
+        }
+        private void MywebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            // Displays the operation identifier, and the transfer progress.
+            Console.WriteLine($"downloaded {e.BytesReceived} of {e.TotalBytesToReceive} bytes. {e.ProgressPercentage} % complete...");
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (downloadedData != null && downloadedData.Length != 0)
