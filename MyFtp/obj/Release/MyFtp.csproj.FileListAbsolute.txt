@@ -1,0 +1,13 @@
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\bin\Release\MyFtp.exe.config
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\bin\Release\MyFtp.exe
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\bin\Release\MyFtp.pdb
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\bin\Release\MyFtpUI.dll
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\bin\Release\MyFtpUI.pdb
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.csproj.AssemblyReference.cache
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.Form1.resources
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.Properties.Resources.resources
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.csproj.GenerateResource.cache
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.csproj.CoreCompileInputs.cache
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.csproj.CopyComplete
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.exe
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtp\obj\Release\MyFtp.pdb

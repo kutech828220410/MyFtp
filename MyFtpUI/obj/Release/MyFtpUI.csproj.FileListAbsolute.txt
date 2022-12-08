@@ -1,0 +1,7 @@
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\bin\Release\MyFtpUI.dll
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\bin\Release\MyFtpUI.pdb
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\obj\Release\MyFtpUI.Ftp_DounloadUI.resources
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\obj\Release\MyFtpUI.csproj.GenerateResource.cache
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\obj\Release\MyFtpUI.csproj.CoreCompileInputs.cache
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\obj\Release\MyFtpUI.dll
+C:\Users\HS1T16\Source\Repos\MyFtp\MyFtpUI\obj\Release\MyFtpUI.pdb
